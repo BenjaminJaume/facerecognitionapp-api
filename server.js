@@ -36,14 +36,13 @@ app.post('/signin', (req, res) => {
     req.body.email === database.users[0].email &&
     req.body.password === database.users[0].password
   ) {
-    res.send('success');
+    res.json(database.users[0]);
   } else {
     res.status(400).json('error logging in');
   }
-  res.json('signin');
 });
 
-app.post('/register', (req, res) => {
+app.post('/signup', (req, res) => {
   const { name, email, password } = req.body;
   database.users.push({
     id: '3',
@@ -66,7 +65,7 @@ app.get('/profile/:id', (req, res) => {
     }
   });
   if (!found) {
-    res.status(404).json('user not found');
+    res.status(400).json('profile: user not found');
   }
 });
 
@@ -81,7 +80,7 @@ app.put('/image', (req, res) => {
     }
   });
   if (!found) {
-    res.status(404).json('user not found');
+    res.status(400).json('image: user not found');
   }
 });
 
