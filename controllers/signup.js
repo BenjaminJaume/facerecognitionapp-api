@@ -1,4 +1,4 @@
-const handleSignup = (req, res, db, bcrypt, saltRounds) => {
+const handleSignup = (db, bcrypt, saltRounds) => (req, res) => {
   const { name, email, password } = req.body;
   var salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(password, salt);

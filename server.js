@@ -29,21 +29,10 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Back-end side of the website');
 });
 
-app.post('/signup', (req, res) => {
-  signup.handleSignup(req, res, db, bcrypt, saltRounds);
-});
-
-app.post('/signin', (req, res) => {
-  signin.handleSignin(req, res, db, bcrypt);
-});
-
-app.get('/profile:id', (req, res) => {
-  profile.handleProfile(req, res, db);
-});
-
-app.put('/image', (req, res) => {
-  image.handleImage(req, res, db);
-});
+app.post('/signup', signup.handleSignup(db, bcrypt, saltRounds));
+app.post('/signin', signin.handleSignin(db, bcrypt));
+app.get('/profile:id', profile.handleProfile(db));
+app.put('/image', image.handleImage(db));
 
 app.listen(3000, () => {
   console.log('app is running on port 3000');
