@@ -39,6 +39,7 @@ app.post('/imageUrl', (req, res) => {
   image.handleAPIcall(req, res);
 });
 
+// Dynamic port
 app.listen(process.env.PORT || 3000, () => {
   console.log(`App is running on port ${process.env.PORT}`);
 });
