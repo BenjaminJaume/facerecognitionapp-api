@@ -28,10 +28,7 @@ const handleSignup = (db, bcrypt) => (req, res) => {
       })
       .then(trx.commit)
       .catch(trx.rollback);
-  }).catch(err => {
-    res.status(400).json('Unable to register there');
-    console.log(err);
-  });
+  }).catch(err => res.status(400).json('Unable to register there'));
 };
 
 module.exports = {
