@@ -23,13 +23,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const saltRounds = bcrypt.genSaltSync(10);
-
 app.get('/', (req, res) => {
   res.send('Welcome to the Back-end side of the website');
 });
 
-app.post('/signup', signup.handleSignup(db, bcrypt, saltRounds));
+app.post('/signup', signup.handleSignup(db, bcrypt));
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.get('/profile:id', profile.handleProfile(db));
 app.put('/image', image.handleImage(db));
