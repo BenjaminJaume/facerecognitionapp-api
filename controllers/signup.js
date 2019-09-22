@@ -5,6 +5,7 @@ const handleSignup = (db, bcrypt) => (req, res) => {
   }
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(password, salt);
+
   db.transaction(trx => {
     trx
       .insert({
@@ -27,7 +28,10 @@ const handleSignup = (db, bcrypt) => (req, res) => {
       })
       .then(trx.commit)
       .catch(trx.rollback);
-  }).catch(err => res.status(400).json('Unable to register there'));
+  }).catch(err => {
+    res.status(400).json('Unable to register there');
+    console.log(err);
+  });
 };
 
 module.exports = {
