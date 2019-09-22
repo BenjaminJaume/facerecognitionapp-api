@@ -14,7 +14,7 @@ const PORT = process.env.PORT;
 const db = knex({
   client: 'pg',
   connection: {
-    host: '127.0.0.1',
+    host: 'postgresql-contoured-14040',
     user: 'postgres',
     password: '1234',
     database: 'facerecognitionapp'
