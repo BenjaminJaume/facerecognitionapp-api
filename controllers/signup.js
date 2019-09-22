@@ -1,7 +1,7 @@
 const handleSignup = (db, bcrypt) => (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
-    return res.status(400).json('Unable to register');
+    return res.status(400).json('Unable to register here');
   }
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(password, salt);
@@ -27,7 +27,7 @@ const handleSignup = (db, bcrypt) => (req, res) => {
       })
       .then(trx.commit)
       .catch(trx.rollback);
-  }).catch(err => res.status(400).json('Unable to register'));
+  }).catch(err => res.status(400).json('Unable to register there'));
 };
 
 module.exports = {
